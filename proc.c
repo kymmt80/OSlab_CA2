@@ -532,3 +532,29 @@ procdump(void)
     cprintf("\n");
   }
 }
+
+int 
+get_parent_pid()
+{
+
+  int parent;
+
+  acquire(&ptable.lock); //get ptable and lock it
+
+  parent = ptable.proc->parent->pid;
+
+  release(&ptable.lock); //restore ptable
+
+  return parent;
+  
+}
+
+int
+set_prosses_parent(int pid){
+
+  acquire(&ptable.lock); //get ptable and lock it
+
+  ptable.proc->parent->pid;
+
+  release(&ptable.lock); //restore ptable
+}

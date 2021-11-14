@@ -89,3 +89,8 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+int
+sys_set_prosses_parent(int id){
+  return set_prosses_parent(id);
+}
