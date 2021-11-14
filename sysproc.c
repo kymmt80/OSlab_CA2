@@ -94,3 +94,15 @@ int
 sys_set_prosses_parent(int pid){
   return set_prosses_parent(pid);
 }
+sys_calculate_sum_of_digits(void)
+{
+  int number = myproc()->tf->edx;   //data register 
+  return calculate_sum_of_digits(number);
+}
+
+int 
+sys_get_parent_pid(void)
+{
+  return get_parent_pid();
+}
+
