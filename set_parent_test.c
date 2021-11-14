@@ -4,7 +4,6 @@
 int main(int argc, char* argv[])
 {
     int A,D,B;
-    //char pids[3];
     A=fork();
     if(A!=0){
         D=fork();
