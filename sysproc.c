@@ -89,3 +89,17 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+int
+sys_calculate_sum_of_digits(void)
+{
+  int number = myproc()->tf->edx;   //data register 
+  return calculate_sum_of_digits(number);
+}
+
+int 
+sys_get_parent_pid(void)
+{
+  return get_parent_pid();
+}
+

@@ -532,3 +532,34 @@ procdump(void)
     cprintf("\n");
   }
 }
+
+// cal sum of digits n
+
+int calculate_sum_of_digits(int n)
+{
+  int sum = 0, digit;
+
+  while(n > 0)
+  {
+    digit = n % 10;
+    sum = sum + digit;
+    n = n / 10;
+  }
+
+  return sum;
+
+}
+
+int get_parent_pid()
+{
+
+  int parent;
+
+  struct proc *p = myproc();  //current process
+
+  parent = p->parent->pid;
+  
+  return parent;
+  
+}
+
