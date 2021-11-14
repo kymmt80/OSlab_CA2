@@ -442,3 +442,25 @@ sys_pipe(void)
   fd[1] = fd1;
   return 0;
 }
+
+int
+sys_get_file_sectors(int fd, uint *sectors)
+{
+  // struct stat *st;
+  struct inode *ip;
+
+  // fstat(fd, &st);
+  struct file *f;
+  if(argfd(0, &fd, &f) < 0)
+    return -1;
+
+  ip = f->ip;
+  for (int i = NDIRECT + 1; i < NINDIRECT + NDIRECT; i++)
+  {
+    int sec;
+    bmap(ip, sec);
+    sectors[i] = sec;
+  }
+  
+  return 0;
+}
