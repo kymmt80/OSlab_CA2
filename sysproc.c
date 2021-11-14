@@ -89,3 +89,27 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+int
+sys_set_process_parent(void){
+
+  int pid;
+
+  if(argint(0, &pid) < 0)
+    return -1;
+  return set_process_parent(pid);
+}
+
+int
+sys_calculate_sum_of_digits(void)
+{
+  int number = myproc()->tf->edx;   //data register 
+  return calculate_sum_of_digits(number);
+}
+
+int 
+sys_get_parent_pid(void)
+{
+  return get_parent_pid();
+}
+

@@ -52,6 +52,7 @@ struct inode*   nameiparent(char*, char*);
 int             readi(struct inode*, char*, uint, uint);
 void            stati(struct inode*, struct stat*);
 int             writei(struct inode*, char*, uint, uint);
+uint            nstatic_bmap(struct inode*, uint);
 
 // ide.c
 void            ideinit(void);
@@ -120,6 +121,9 @@ void            userinit(void);
 int             wait(void);
 void            wakeup(void*);
 void            yield(void);
+int             set_process_parent(int);
+int             calculate_sum_of_digits(int);
+int             get_parent_pid(void);
 
 // swtch.S
 void            swtch(struct context**, struct context*);
