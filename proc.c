@@ -533,28 +533,17 @@ procdump(void)
   }
 }
 
-int 
-get_parent_pid()
-{
-
-  int parent;
-
-  acquire(&ptable.lock); //get ptable and lock it
-
-  parent = ptable.proc->parent->pid;
-
-  release(&ptable.lock); //restore ptable
-
-  return parent;
-  
-}
-
 int
 set_prosses_parent(int pid){
+  struct proc *p;
+  acquire(&ptable.lock);
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+    if(p->pid==pid){
+      p->real_parent=p->parent;
+      p->parent=ptable.proc;
+      break;
+    }
+  } 
 
-  acquire(&ptable.lock); //get ptable and lock it
-
-  ptable.proc->parent->pid;
-
-  release(&ptable.lock); //restore ptable
+  release(&ptable.lock); 
 }

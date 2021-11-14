@@ -91,6 +91,6 @@ sys_uptime(void)
 }
 
 int
-sys_set_prosses_parent(int id){
-  return set_prosses_parent(id);
+sys_set_prosses_parent(int pid){
+  return set_prosses_parent(pid);
 }
