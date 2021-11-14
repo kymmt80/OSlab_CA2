@@ -442,3 +442,30 @@ sys_pipe(void)
   fd[1] = fd1;
   return 0;
 }
+
+int
+sys_get_file_sectors(void)
+{
+
+  struct inode *ip;
+  int *sectors;
+  int fd;
+  struct file *f;
+  
+
+  if(argfd(0, &fd, &f) < 0)
+    return -1;
+
+  ip = f->ip;
+
+  if(argptr(1, (void*)&sectors, ip->size/BSIZE) < 0)
+    return -1;
+
+  int i;
+  sectors[0] = ip->size/BSIZE;
+  for (i = 1; i <= ip->size/BSIZE; i++)
+  {
+    sectors[i] = nstatic_bmap(ip, i);
+  }
+  return i;
+  }

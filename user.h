@@ -23,6 +23,7 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+int get_file_sectors(int, uint*);
 
 // ulib.c
 int stat(const char*, struct stat*);

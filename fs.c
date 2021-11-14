@@ -399,6 +399,11 @@ bmap(struct inode *ip, uint bn)
   panic("bmap: out of range");
 }
 
+
+uint nstatic_bmap(struct inode *ip, uint bn){
+  return bmap(ip, bn);
+}
+
 // Truncate inode (discard contents).
 // Only called when the inode has no links
 // to it (no directory entries referring to it)
