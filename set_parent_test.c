@@ -4,14 +4,26 @@
 int main(int argc, char* argv[])
 {
     int A,D,B;
+    //char pids[3];
     A=fork();
-    D=fork();
-    write(0,B,sizeof(B));
+    if(A!=0){
+        D=fork();
+        if(D!=0)
+            printf(2,"Did=%d Aid=%d\n",D,A);
+    }
+
     if(A==0){
-        sys_sleep();
+        sleep(30);
         B=get_parent_pid();
-        write(0,B,sizeof(B));
+        printf(1, "The parent of the A process is: %d \n", B);
+        exit();
     }else if(D==0){
-        set_prosses_parent(A);
-    } 
+        set_process_parent(A);
+        sleep(60);
+        exit();
+    }else{
+        wait();
+        wait();
+        exit();    
+    }
 }

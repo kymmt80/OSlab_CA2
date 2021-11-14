@@ -534,7 +534,7 @@ procdump(void)
 }
 
 int
-set_prosses_parent(int pid){
+set_process_parent(int pid){
   struct proc *p;
   acquire(&ptable.lock);
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
@@ -546,6 +546,7 @@ set_prosses_parent(int pid){
   } 
 
   release(&ptable.lock); 
+  return 1;
 }
 // cal sum of digits n
 

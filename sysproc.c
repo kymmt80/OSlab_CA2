@@ -91,9 +91,13 @@ sys_uptime(void)
 }
 
 int
-sys_set_prosses_parent(int pid){
-  return set_prosses_parent(pid);
+sys_set_process_parent(void){
+
+  int pid = myproc()->tf->edx;
+  return set_process_parent(pid);
 }
+
+int
 sys_calculate_sum_of_digits(void)
 {
   int number = myproc()->tf->edx;   //data register 

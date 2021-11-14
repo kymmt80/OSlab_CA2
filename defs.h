@@ -120,7 +120,7 @@ void            userinit(void);
 int             wait(void);
 void            wakeup(void*);
 void            yield(void);
-int             set_prosses_parent(int);
+int             set_process_parent(int);
 int             calculate_sum_of_digits(int);
 int             get_parent_pid(void);
 

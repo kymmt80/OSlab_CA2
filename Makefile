@@ -183,6 +183,7 @@ UPROGS=\
 	_zombie\
 	_calculate_sum_of_digits\
 	_get_parent_pid\
+	_set_parent_test\
 
 fs.img: mkfs README $(UPROGS)
 	./mkfs fs.img README $(UPROGS)
@@ -253,7 +254,7 @@ EXTRA=\
 	mkfs.c ulib.c user.h cat.c echo.c forktest.c grep.c kill.c\
 	ln.c ls.c mkdir.c rm.c stressfs.c usertests.c wc.c zombie.c\
 	printf.c umalloc.c calculate_sum_of_digits.c get_parent_pid.c\
-	README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
+	set_parent_test.c README dot-bochsrc *.pl toc.* runoff runoff1 runoff.list\
 	.gdbinit.tmpl gdbutil\
 
 dist:

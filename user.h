@@ -23,7 +23,7 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
-int set_prosses_parent(int);
+int set_process_parent(int);
 int calculate_sum_of_digits(void);
 int get_parent_pid(void);
 
