@@ -18,11 +18,12 @@ int main(int argc, char* argv[])
         printf(1, "The parent of the A process is: %d \n", B);
         exit();
     }else if(D==0){
-        set_process_parent(A);
-        sleep(60);
+        if(set_process_parent(A)<0){
+            printf(0,"Error Changeing The Parent");
+        }
+        wait();
         exit();
     }else{
-        wait();
         wait();
         exit();    
     }

@@ -93,7 +93,10 @@ sys_uptime(void)
 int
 sys_set_process_parent(void){
 
-  int pid = myproc()->tf->edx;
+  int pid;
+
+  if(argint(0, &pid) < 0)
+    return -1;
   return set_process_parent(pid);
 }
 
