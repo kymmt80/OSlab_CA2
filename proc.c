@@ -538,15 +538,16 @@ set_process_parent(int pid){
   struct proc *p;
   acquire(&ptable.lock);
   for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
-    if(p->pid==pid){
+    if(p -> pid == pid){
       p->real_parent=p->parent;
       p->parent=ptable.proc;
-      break;
+      release(&ptable.lock);
+      return 0;
     }
   } 
 
   release(&ptable.lock); 
-  return 1;
+  return -1;
 }
 // cal sum of digits n
 
@@ -571,8 +572,10 @@ int get_parent_pid()
   int parent;
 
   struct proc *p = myproc();  //current process
-
-  parent = p->parent->pid;
+  if(p->real_parent)
+    parent=p->real_parent->pid;
+  else
+    parent = p->parent->pid;
   
   return parent;
   
